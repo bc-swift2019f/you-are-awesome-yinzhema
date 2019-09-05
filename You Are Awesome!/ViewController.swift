@@ -37,9 +37,10 @@ class ViewController: UIViewController {
                     UIColor.orange,
                     UIColor.purple,
                     UIColor.yellow]
-        let index=Int.random(in: 0...messages.count-1)
-        messageLabel.text=messages[index]
-        messageLabel.textColor=colors[index]
+        //let index=Int.random(in: 0...messages.count-1)
+        messageLabel.text=messages.randomElement()!
+        messageLabel.textColor=colors.randomElement()!
+        
     }
     
 }
