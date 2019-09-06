@@ -11,8 +11,8 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var messageLabel: UILabel!
-    
     var index=0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -38,8 +38,16 @@ class ViewController: UIViewController {
                     UIColor.purple,
                     UIColor.yellow]
         //let index=Int.random(in: 0...messages.count-1)
-        messageLabel.text=messages.randomElement()!
-        messageLabel.textColor=colors.randomElement()!
+        var newIndex = -1
+        
+        repeat{
+            newIndex=Int.random(in: 0...messages.count-1)
+        } while newIndex==index
+        
+        index=newIndex
+        
+        messageLabel.text=messages[index]
+        messageLabel.textColor=colors[index]
         
     }
     
