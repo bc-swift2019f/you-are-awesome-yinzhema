@@ -11,7 +11,12 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var messageLabel: UILabel!
-    var index=0
+    
+    @IBOutlet weak var imageLabel: UIImageView!
+    
+    var messageIndex=0
+    var numberOfImages=10
+    var imageIndex=0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,18 +42,37 @@ class ViewController: UIViewController {
                     UIColor.orange,
                     UIColor.purple,
                     UIColor.yellow]
+//        let images=["image0",
+//                    "image1",
+//                    "image2",
+//                    "image3",
+//                    "image4",
+//                    "image5",
+//                    "image6",
+//                    "image7",
+//                    "image8",
+//                    "image9"
+//        ]
+        
         //let index=Int.random(in: 0...messages.count-1)
         //var newIndex = -1
         var newIndex: Int //declares but doesnt initialize newIndex
         
         repeat{
             newIndex=Int.random(in: 0...messages.count-1)
-        } while newIndex==index
+        } while newIndex==messageIndex
         
-        index=newIndex
+        messageIndex=newIndex
+        messageLabel.text=messages[messageIndex]
+        messageLabel.textColor=colors[messageIndex]
         
-        messageLabel.text=messages[index]
-        messageLabel.textColor=colors[index]
+        repeat{
+            newIndex=Int.random(in:0..<numberOfImages)
+        } while imageIndex==newIndex
+        
+        imageIndex=newIndex
+        //imageLabel.image=UIImage(named:images[index])
+        imageLabel.image=UIImage(named:"image\(imageIndex)")
         
     }
     
