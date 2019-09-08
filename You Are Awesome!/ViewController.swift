@@ -28,12 +28,12 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    func playSound(soundName:String)  {
+    func playSound(soundName:String, audioPlayer: inout AVAudioPlayer)  {
         if let sound=NSDataAsset(name: soundName){
             //use if let to see if the file soundName exists
             do{
-                try awesomePlayer=AVAudioPlayer(data: sound.data)
-                awesomePlayer.play()
+                try audioPlayer=AVAudioPlayer(data: sound.data)
+                audioPlayer.play()
             } catch{
                 //if sound.data is not valid
                 print("ERROR: data in \(soundName) couldn't be played as a sound")
@@ -87,7 +87,7 @@ class ViewController: UIViewController {
         
         //play a sound
         soundIndex=indexCreator(Index: soundIndex, length: numberOfSounds)
-        playSound(soundName: "sound\(soundIndex)")
+        playSound(soundName: "sound\(soundIndex)", audioPlayer: &awesomePlayer)
     }
     
 }
