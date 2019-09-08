@@ -38,7 +38,8 @@ class ViewController: UIViewController {
                     UIColor.purple,
                     UIColor.yellow]
         //let index=Int.random(in: 0...messages.count-1)
-        var newIndex = -1
+        //var newIndex = -1
+        var newIndex: Int //declares but doesnt initialize newIndex
         
         repeat{
             newIndex=Int.random(in: 0...messages.count-1)
