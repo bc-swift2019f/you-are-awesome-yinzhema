@@ -28,6 +28,31 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    func playSound(soundName:String)  {
+        if let sound=NSDataAsset(name: soundName){
+            //use if let to see if the file soundName exists
+            do{
+                try awesomePlayer=AVAudioPlayer(data: sound.data)
+                awesomePlayer.play()
+            } catch{
+                //if sound.data is not valid
+                print("ERROR: data in \(soundName) couldn't be played as a sound")
+            }
+        }else{
+            //if sound does not work, print out an error
+            print("Error: file\(soundName) didn't load")
+        }
+    }
+    
+    func indexCreator(Index: Int, length:Int) -> Int {
+        var newIndex: Int
+        repeat{
+            newIndex=Int.random(in:0...length-1)
+        } while Index==newIndex
+        
+        return newIndex
+    }
+    
     @IBAction func showMessagePressed(_ sender: UIButton) {
         let messages=["You Are Fantastic!!",
                       "You Are Great!!",
@@ -47,59 +72,22 @@ class ViewController: UIViewController {
                     UIColor.orange,
                     UIColor.purple,
                     UIColor.yellow]
-//        let images=["image0",
-//                    "image1",
-//                    "image2",
-//                    "image3",
-//                    "image4",
-//                    "image5",
-//                    "image6",
-//                    "image7",
-//                    "image8",
-//                    "image9"
-//        ]
         
         //var newIndex = -1 //declare and initialize at the same time
-        var newIndex: Int //declares but doesnt initialize newIndex
+        //var newIndex: Int //declares but doesnt initialize newIndex
         
         //show a message
-        repeat{
-            newIndex=Int.random(in: 0...messages.count-1)
-        } while newIndex==messageIndex
-        
-        messageIndex=newIndex
+        messageIndex=indexCreator(Index: messageIndex, length: messages.count)
         messageLabel.text=messages[messageIndex]
         messageLabel.textColor=colors[messageIndex]
         
         //show an image
-        repeat{
-            newIndex=Int.random(in:0..<numberOfImages)
-        } while imageIndex==newIndex
-        
-        imageIndex=newIndex
-        //imageLabel.image=UIImage(named:images[index])
+        imageIndex=indexCreator(Index: imageIndex, length: numberOfImages)
         imageLabel.image=UIImage(named:"image\(imageIndex)")
         
         //play a sound
-        repeat{
-            newIndex=Int.random(in: 0..<numberOfSounds)
-        } while soundIndex==newIndex
-        
-        soundIndex=newIndex
-        var soundName="sound\(soundIndex)"
-        if let sound=NSDataAsset(name: soundName){
-            //use if let to see if the file soundName exists
-            do{
-                try awesomePlayer=AVAudioPlayer(data: sound.data)
-                awesomePlayer.play()
-            } catch{
-                //if sound.data is not valid
-                print("ERROR: data in \(soundName) couldn't be played as a sound")
-            }
-        }else{
-            //if sound does not work, print out an error
-            print("Error: file\(soundName) didn't load")
-        }
+        soundIndex=indexCreator(Index: soundIndex, length: numberOfSounds)
+        playSound(soundName: "sound\(soundIndex)")
     }
     
 }
