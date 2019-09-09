@@ -12,7 +12,7 @@ import AVFoundation
 class ViewController: UIViewController {
     
     @IBOutlet weak var messageLabel: UILabel!
-    
+    @IBOutlet weak var switchLabel: UISwitch!
     @IBOutlet weak var imageLabel: UIImageView!
     
     var awesomePlayer=AVAudioPlayer()
@@ -53,6 +53,13 @@ class ViewController: UIViewController {
         return newIndex
     }
     
+    
+    @IBAction func soundSwitchPressed(_ sender: UISwitch) {
+        if (switchLabel.isOn==false) && (soundIndex != 0) {
+            awesomePlayer.stop()
+        }
+    }
+    
     @IBAction func showMessagePressed(_ sender: UIButton) {
         let messages=["You Are Fantastic!!",
                       "You Are Great!!",
@@ -86,8 +93,11 @@ class ViewController: UIViewController {
         imageLabel.image=UIImage(named:"image\(imageIndex)")
         
         //play a sound
-        soundIndex=indexCreator(Index: soundIndex, length: numberOfSounds)
-        playSound(soundName: "sound\(soundIndex)", audioPlayer: &awesomePlayer)
+        if switchLabel.isOn {
+            soundIndex=indexCreator(Index: soundIndex, length: numberOfSounds)
+            playSound(soundName: "sound\(soundIndex)", audioPlayer: &awesomePlayer)
+        }
+        
     }
     
 }

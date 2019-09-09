@@ -19,10 +19,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nOm-FL-ct4">
-                                <rect key="frame" x="114.5" y="160" width="185" height="30"/>
+                                <rect key="frame" x="278" y="157" width="116" height="33"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="lYW-EI-NRC"/>
-                                    <constraint firstAttribute="width" constant="185" id="rhK-LX-Mfp"/>
+                                    <constraint firstAttribute="height" constant="33" id="Na8-Wk-Baj"/>
+                                    <constraint firstAttribute="width" constant="116" id="ozq-fF-fq3"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Show Message">
@@ -45,24 +45,45 @@
                                 <color key="textColor" red="0.53959375620000005" green="0.061818420890000003" blue="0.04153894633" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1ot-eB-Bd6">
+                                <rect key="frame" x="123" y="157" width="51" height="31"/>
+                                <connections>
+                                    <action selector="soundSwitchPressed:" destination="BYZ-38-t0r" eventType="valueChanged" id="wOY-vl-bDb"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Play Sound: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fi7-Z8-kAf">
+                                <rect key="frame" x="20" y="163" width="95" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="95" id="DVF-Q8-ky5"/>
+                                    <constraint firstAttribute="height" constant="21" id="pJE-8M-oc8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.92969042059999996" green="0.9226416945" blue="0.8600030541" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fhE-cy-723" secondAttribute="trailing" constant="20" id="82v-Vi-gWd"/>
                             <constraint firstItem="XlZ-Fs-CBS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="CAs-t2-ART"/>
-                            <constraint firstItem="nOm-FL-ct4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="FIf-dt-AkT"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nOm-FL-ct4" secondAttribute="trailing" constant="20" id="CH3-IK-na8"/>
+                            <constraint firstItem="Fi7-Z8-kAf" firstAttribute="top" secondItem="fhE-cy-723" secondAttribute="bottom" constant="11" id="FYQ-XS-MQ5"/>
                             <constraint firstItem="fhE-cy-723" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="MOR-Ua-7jM"/>
-                            <constraint firstItem="XlZ-Fs-CBS" firstAttribute="top" secondItem="nOm-FL-ct4" secondAttribute="bottom" constant="8" id="ZWb-RI-B90"/>
+                            <constraint firstItem="1ot-eB-Bd6" firstAttribute="leading" secondItem="Fi7-Z8-kAf" secondAttribute="trailing" constant="8" id="VAM-Lc-tM8"/>
+                            <constraint firstItem="Fi7-Z8-kAf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Vdp-DM-nln"/>
+                            <constraint firstItem="XlZ-Fs-CBS" firstAttribute="top" secondItem="nOm-FL-ct4" secondAttribute="bottom" constant="8" symbolic="YES" id="WJo-3l-bof"/>
+                            <constraint firstItem="nOm-FL-ct4" firstAttribute="top" secondItem="fhE-cy-723" secondAttribute="bottom" constant="5" id="ZeW-zQ-eRc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="XlZ-Fs-CBS" secondAttribute="bottom" constant="37" id="dh2-9R-fd2"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XlZ-Fs-CBS" secondAttribute="trailing" constant="20" id="hdv-jt-xyr"/>
                             <constraint firstItem="fhE-cy-723" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="iNb-GM-pG5"/>
-                            <constraint firstItem="nOm-FL-ct4" firstAttribute="top" secondItem="fhE-cy-723" secondAttribute="bottom" constant="8" id="wE9-ff-g7K"/>
+                            <constraint firstItem="1ot-eB-Bd6" firstAttribute="top" secondItem="fhE-cy-723" secondAttribute="bottom" constant="5" id="ii1-Q5-7Ju"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="imageLabel" destination="XlZ-Fs-CBS" id="xJE-UR-JJ7"/>
                         <outlet property="messageLabel" destination="fhE-cy-723" id="WLv-f3-vvO"/>
+                        <outlet property="switchLabel" destination="1ot-eB-Bd6" id="foQ-RL-5Jp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
